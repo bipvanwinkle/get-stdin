@@ -5,11 +5,6 @@ module.exports = () => {
 	let ret = '';
 
 	return new Promise(resolve => {
-		if (stdin.isTTY) {
-			resolve(ret);
-			return;
-		}
-
 		stdin.setEncoding('utf8');
 
 		stdin.on('readable', () => {
@@ -31,11 +26,6 @@ module.exports.buffer = () => {
 	let len = 0;
 
 	return new Promise(resolve => {
-		if (stdin.isTTY) {
-			resolve(new Buffer('')); // eslint-disable-line unicorn/no-new-buffer
-			return;
-		}
-
 		stdin.on('readable', () => {
 			let chunk;
 
